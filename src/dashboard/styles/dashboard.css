@@ -1,0 +1,17 @@
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.righ-back{
+    background-color: rgb(241 245 249 / 1);
+}
+
+.bg-dual{
+    background-color: rgb(236, 236, 236);
+}
+
+.with-overflow-vh{
+    max-height: 87vh;
+    overflow-y: auto;
+}
