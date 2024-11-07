@@ -5,9 +5,13 @@ import CardEnableLayer from "../../views/cardEnableLayer"
 
 
 interface TLSHTTP{
-    Response:string,
-    Cert:string,
-    Key:string,
+    Http:{
+        Response:string,
+    }
+    Tls:{
+        Cert:string,
+        Key:string,
+    },
     Listen:string
 }
 
@@ -19,7 +23,7 @@ interface LayerSSLParams {
 
 
 const Layer_HTTPTLS = () => {
-    let [lhttpsslParam, SetlhttpsslParam] = useState<LayerSSLParams>({ enabled: false, ht:[{ Response:"",Cert: getBaseDirectory()+"/cfg/cert.pem",Key:getBaseDirectory()+"/cfg/key.pem",Listen:""}]})
+    let [lhttpsslParam, SetlhttpsslParam] = useState<LayerSSLParams>({ enabled: false, ht:[{Http:{Response:""},Tls:{Cert: getBaseDirectory()+"/cfg/cert.pem",Key:getBaseDirectory()+"/cfg/key.pem"},Listen:""}]})
 
     let notify= ()=>{
         SetlhttpsslParam({...lhttpsslParam})
@@ -33,7 +37,7 @@ const Layer_HTTPTLS = () => {
                 lhttpsslParam.ht = response.data
             }else{
                 lhttpsslParam.enabled = false
-                lhttpsslParam.ht = [{ Response:"",Cert: getBaseDirectory()+"/cfg/cert.pem",Key:getBaseDirectory()+"/cfg/key.pem",Listen:""}]
+                lhttpsslParam.ht = [{Http:{Response:""},Tls:{Cert: getBaseDirectory()+"/cfg/cert.pem",Key:getBaseDirectory()+"/cfg/key.pem"},Listen:""}]
             }
            
             notify()
@@ -48,7 +52,7 @@ const Layer_HTTPTLS = () => {
 
     
     let addNewHTTPSSLLayer = () => {
-        lhttpsslParam.ht.push({ Response:"",Cert: getBaseDirectory()+"/cfg/cert.pem",Key:getBaseDirectory()+"/cfg/key.pem",Listen:""})
+        lhttpsslParam.ht.push({Http:{Response:""},Tls:{Cert: getBaseDirectory()+"/cfg/cert.pem",Key:getBaseDirectory()+"/cfg/key.pem"},Listen:""})
         notify()
     }
 
@@ -106,9 +110,9 @@ const Layer_HTTPTLS = () => {
                                         notify()
                                     }} type="text" className=" rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary" />
 
-                                    <p className="text-xs text-gray-200 mb-2 mt-2 ">The HTTP Response in the HTTP connection</p>
-                                    <input value={param.Response} onChange={(e) => {
-                                        param.Response = e.target.value
+                                    <p className="text-xs text-gray-200 mb-2 mt-2 ">The HTTP Response in the HTTP connection example: HTTP/1.1 200 OK\r\n\r\n</p>
+                                    <input placeholder="HTTP/1.1 200 OK\r\n\r\n" value={param.Http.Response} onChange={(e) => {
+                                        param.Http.Response = e.target.value
                                         notify()
                                     }} type="text" className=" rounded-lg border-[1.5px] border-stroke bg-transparent py-3 px-5 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary" />
 
