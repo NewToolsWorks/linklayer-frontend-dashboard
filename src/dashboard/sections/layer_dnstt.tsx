@@ -138,6 +138,8 @@ const Layer_DNSTT = () => {
                                 let message = ldnsttparam.enabled ? "DNSTT  layer updated" : "DNSTT Mix layer disabled and deleted parameters"
                                 alert(message)
                                 refreshDNSTT()
+                            }).catch((err)=>{
+                                alert("service running, please stop.")
                             })
                         }
                         }  className="w-3/4 mt-2 flex w-full cursor-pointer justify-center rounded bg-sky-800 p-3 font-medium text-gray hover:bg-opacity-90">Save HTTP/TLS Layer</button>

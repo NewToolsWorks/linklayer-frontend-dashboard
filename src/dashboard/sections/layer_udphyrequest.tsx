@@ -125,6 +125,8 @@ const Layer_UDPHyrequest = () => {
                                     let message = ludpParams.enabled ? "UDP  layer updated" : "UDP Mix layer disabled and deleted parameters"
                                     alert(message)
                                     refreshUDP()
+                                }).catch((err)=>{
+                                    alert("service running, please stop.")
                                 })
                             }
                         } className="w-3/4 mt-2 flex w-full cursor-pointer justify-center rounded bg-sky-800 p-3 font-medium text-gray hover:bg-opacity-90">Save UDPHyRequest Layer</button>
