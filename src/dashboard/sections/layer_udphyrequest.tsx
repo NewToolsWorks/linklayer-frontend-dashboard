@@ -23,7 +23,7 @@ const Layer_UDPHyrequest = () => {
     let [ludpParams, setludpParams] = useState<UDPHyRequestParams>({
         enabled: false, u: {
             listen: ":36718", exclude: "", net: "", cert: getBaseDirectory() + "/layers/cfgs/my.crt",
-            key: getBaseDirectory() + "binary/layers/cfgs/my.key", obfs: "", max_conn_client: 500000  //some features as harcoded, maybe can change later
+            key: getBaseDirectory() + "/layers/cfgs/my.key", obfs: "", max_conn_client: 500000  //some features as harcoded, maybe can change later
         }
     })
     let [selOp, setSelOp] = useState(0)
@@ -57,7 +57,7 @@ const Layer_UDPHyrequest = () => {
                 ludpParams.enabled = false
                 ludpParams.u = {
                     listen: ":36718", exclude: "", net: "", cert: getBaseDirectory() + "/layers/cfgs/my.crt",
-                    key: getBaseDirectory() + "binary/layers/cfgs/my.key", obfs: "", max_conn_client: 500000
+                    key: getBaseDirectory() + "/layers/cfgs/my.key", obfs: "", max_conn_client: 500000
                 }
                 setSelOp(0)
 
